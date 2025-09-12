@@ -3,3 +3,16 @@ https://trello.com/b/qq4J0zNl/sleep-outside-team-17
 
 Collaborators:
 Pascal E. Okezie (Gennesis)
+
+Step-by-Step workflow:
+1. Choose a Trello card, assign yourself to it, and move to "Doing".
+2. Pull any changes from your team's project.
+3. Make a branch
+4. Complete the work.
+5. Lint and format the code.
+6. Commit and push.
+7. Make a pull request for your new branch.
+8. Let your team know there is a pull request waiting.
+9. Another team member should review the pull request in GitHub and, if everything looks good, Merge the request.
+10. Delete the old branch.
+11. Move the Trello card to the "Done" list.
