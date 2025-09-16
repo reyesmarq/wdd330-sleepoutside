@@ -6,16 +6,20 @@ const dataSource = new ProductData('tents');
 const productId = getParam('product');
 const productDetails = new ProductDetails(productId, dataSource);
 
-document.getElementById('product-detail').innerHTML =
-  await productDetails.renderProductDetails();
-
-// add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
   productDetails.addProductToCart(product);
 }
 
-// add listener to Add to Cart button
-document
-  .getElementById('addToCart')
-  .addEventListener('click', addToCartHandler);
+async function bootstrap() {
+  document.getElementById('product-detail').innerHTML =
+    await productDetails.renderProductDetails();
+
+  const btn = document.getElementById('addToCart');
+
+  if (btn) {
+    btn.addEventListener('click', addToCartHandler);
+  }
+}
+
+bootstrap();
