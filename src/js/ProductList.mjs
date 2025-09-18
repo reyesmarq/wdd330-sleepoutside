@@ -1,17 +1,18 @@
-
 function productCardTemplate(product) {
-    console.log("product===========", product)
-  const discount = Math.round(product.SuggestedRetailPrice - product.FinalPrice);
+  const discount = Math.round(
+    product.SuggestedRetailPrice - product.FinalPrice,
+  );
   return `
-  <li class="product-card">
-    <a href="product_pages/?product=${product.Id}">
-      <img src="${product.Image}" alt="${product.Name}">
-      <h2 class="card__brand">${product.Brand.Name}</h2>
-      <h3 class="card__name">${product.Name}</h3>
-      <p class="product-card__price">$ ${product.FinalPrice} ${product.FinalPrice < product.SuggestedRetailPrice ? '<span class="discount-badge">¡Sale!</span>' : ''}</p>
-      <span class="product-card__price">$ ${discount}.00 off</span>
-    </a>
-  </li>`;
+    <li class="product-card">
+      <a href="product_pages/?product=${product.Id}">
+        <img src="${product.Image}" alt="${product.Name}">
+        <h2 class="card__brand">${product.Brand.Name}</h2>
+        <h3 class="card__name">${product.Name}</h3>
+        <p class="product-card__price">$ ${product.FinalPrice} ${product.FinalPrice < product.SuggestedRetailPrice ? '<span class="discount-badge">¡Sale!</span>' : ''}</p>
+        <span class="product-card__price">$ ${discount}.00 off</span>
+      </a>
+    </li>
+  `;
 }
 
 export default class ProductList {
@@ -27,7 +28,7 @@ export default class ProductList {
   }
 
   renderList(list) {
-    const htmlstring = list.map(productCardTemplate);
-    this.listElement.innerHTML = htmlstring.join('');
+    const htmlstring = list.map(productCardTemplate).join('');
+    this.listElement.innerHTML = htmlstring;
   }
 }
