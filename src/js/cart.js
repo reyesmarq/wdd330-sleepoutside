@@ -35,7 +35,6 @@ renderCartContents();
 
 document.querySelector('.product-list').addEventListener('click', (e) => {
   if (e.target && e.target.id === 'deleteFromCart') {
-    console.log('click', e.target.dataset.id);
     const cartItems = getLocalStorage('so-cart') ?? [];
     const itemToRemoveIndex = cartItems.findIndex(
       (item) => item.Id === e.target.dataset.id,
@@ -47,4 +46,3 @@ document.querySelector('.product-list').addEventListener('click', (e) => {
     }
   }
 });
-console.log('🚀 ~ element', element);
