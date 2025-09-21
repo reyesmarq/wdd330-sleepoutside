@@ -1,6 +1,8 @@
+import { renderListWithTemplate } from "./utils.mjs";
+
 function productCardTemplate(product) {
   const discount = Math.round(
-    product.SuggestedRetailPrice - product.FinalPrice,
+    product.SuggestedRetailPrice - product.FinalPrice
   );
   return `
     <li class="product-card">
@@ -13,20 +15,6 @@ function productCardTemplate(product) {
       </a>
     </li>
   `;
-}
-import { renderListWithTemplate } from "./utils.mjs";
-
-function productCardTemplate(product) {
-  return `
-    <li class="product-card">
-      <a href="product_pages/?products=${product.Id}">
-        <img src="${product.Image}" alt="${product.Name}">
-        <h2>${product.Brand.Name}</h2>
-        <h3>${product.Name}</h3>
-        <p class="product-card__price">$${product.FinalPrice}</p>
-      </a>
-    </li>
-    `;
 }
 
 export default class ProductList {
@@ -42,7 +30,6 @@ export default class ProductList {
   }
 
   renderList(list) {
-    const htmlstring = list.map(productCardTemplate).join('');
-    this.listElement.innerHTML = htmlstring;
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
