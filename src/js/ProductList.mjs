@@ -1,6 +1,8 @@
+import { renderListWithTemplate } from "./utils.mjs";
+
 function productCardTemplate(product) {
   const discount = Math.round(
-    product.SuggestedRetailPrice - product.FinalPrice,
+    product.SuggestedRetailPrice - product.FinalPrice
   );
   return `
     <li class="product-card">
@@ -28,7 +30,6 @@ export default class ProductList {
   }
 
   renderList(list) {
-    const htmlstring = list.map(productCardTemplate).join('');
-    this.listElement.innerHTML = htmlstring;
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
