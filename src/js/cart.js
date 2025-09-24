@@ -4,6 +4,7 @@ function renderCartContents() {
   const cartItems = getLocalStorage('so-cart');
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  renderCartTotal();
 }
 
 /**@param {import("../types/product.d.ts").Product} item
@@ -29,6 +30,20 @@ function cartItemTemplate(item) {
   `;
 
   return newItem;
+}
+
+// Function to calculate and render the cart total
+function renderCartTotal() {
+  const cartItems = getLocalStorage('so-cart');
+  const totalFooter = document.querySelector('.cart-footer');
+
+  if (cartItems && cartItems.length > 0) {
+    totalFooter.classList.remove('hide');
+    const total = cartItems.reduce((acc, item) => acc + item.FinalPrice, 0);
+    document.querySelector('.cart-total').textContent = total.toFixed(2);
+  } else {
+    totalFooter.classList.add('hide');
+  }
 }
 
 renderCartContents();

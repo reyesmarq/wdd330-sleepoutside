@@ -9,8 +9,6 @@ export default class ProductList {
 
   async init() {
     const list = await this.dataSource.getData(this.category);
-    console.log("API Data:", list);
-
     this.renderList(list);
   }
 
