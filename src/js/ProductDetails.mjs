@@ -34,8 +34,7 @@ export default class ProductDetails {
 
   async renderProductDetails() {
     await this.init();
-
-    console.log({product: this.product})
+    const discount = Math.round(this.product.SuggestedRetailPrice - this.product.FinalPrice);
 
     const html = `
       <main class="divider">
@@ -50,7 +49,7 @@ export default class ProductDetails {
             alt="${this.product.NameWithoutBrand}"
           />
 
-          <p class="product-card__price">$${this.product.FinalPrice}</p>
+          <p class="product-card__price">$${this.product.FinalPrice} ${discount > 0 ? `<span class="discount-badge">Save $${discount}!</span>` : ""}</p>
 
           <p class="product__color">${this.product.Colors[0].ColorName}</p>
 
