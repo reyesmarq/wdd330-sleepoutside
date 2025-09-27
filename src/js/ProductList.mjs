@@ -1,4 +1,9 @@
+// FILE: src/js/ProductList.mjs
+
 const baseURL = import.meta.env.VITE_SERVER_URL;
+
+// NOTE: Ensure your required imports are present at the top of the file
+// import ProductData from "./ProductData.mjs"; 
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -25,8 +30,8 @@ function productCardTemplate(product) {
   );
   return `
     <li class="product-card">
-      <a href="/product_pages/?product=${product.Id}">
-        <img src="${product.Images.PrimaryLarge}" alt="${product.Name}">
+      <a href="../product-pages/index.html?product=${product.Id}">
+        <img src="${product.Image}" alt="${product.Name}">
         <h2 class="card__brand">${product.Brand.Name}</h2>
         <h3 class="card__name">${product.Name}</h3>
         <p class="product-card__price">$ ${product.FinalPrice} ${product.FinalPrice < product.SuggestedRetailPrice ? '<span class="discount-badge">¡Sale!</span>' : ''} </p>
