@@ -284,8 +284,8 @@ footer {
   display: inline-block;
   margin-left: 8px;
   padding: 2px 6px;
-  background-color: var(--tertiary-color); 
-  color: #fff; 
+  background-color: var(--tertiary-color);
+  color: #fff;
   font-size: 0.85rem;
   font-weight: bold;
   border-radius: 4px;
@@ -294,4 +294,23 @@ footer {
 #product-list-category {
   text-transform: capitalize;
   font-size: 20px;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart .cart-items-count {
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  background-color: var(--tertiary-color);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
