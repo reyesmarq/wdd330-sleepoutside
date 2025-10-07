@@ -2,12 +2,25 @@ import { getLocalStorage } from './utils.mjs';
 
 export class NumberOfItemsOnCart {
   constructor() {
-    this.cartItems = getLocalStorage('so-cart') || [];
+    this.cartKey = 'so-cart';
+    this.cartCountElementId = 'cart-items-count';
+  }
+
+  getCartItems() {
+    const data = getLocalStorage(this.cartKey);
+    if (!data) return [];
+    return Array.isArray(data) ? data : [data]; // legacy support
+  }
+
+  getCartCount() {
+    const items = this.getCartItems();
+    return items.reduce((total, item) => total + (item.quantity ?? 1), 0);
   }
 
   updateCartCount() {
-    this.cartItems = getLocalStorage('so-cart') || [];
-    const cartCountElement = document.getElementById('cart-items-count');
-    cartCountElement.textContent = this.cartItems.length;
+    const cartCountElement = document.getElementById(this.cartCountElementId);
+    if (!cartCountElement) return; // graceful fail if not found
+
+    cartCountElement.textContent = this.getCartCount();
   }
 }
